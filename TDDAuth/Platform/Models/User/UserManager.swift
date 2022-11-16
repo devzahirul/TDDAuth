@@ -21,6 +21,11 @@ class UserManager {
             return
         }
         
-        completion(.failure(.notFound))
+        let isValidEmail = ValidationManager.checkIsValidEmail(registrationModel.email)
+        if !isValidEmail {
+            completion(.failure(.invalidEmailAddress))
+            return
+        }
+        completion(.failure(.moveNext))
     }
 }

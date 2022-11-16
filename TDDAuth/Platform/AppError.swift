@@ -10,4 +10,6 @@ import Foundation
 enum AppError: Error {
     case notFound
     case fieldCanNotEmpty
+    case invalidEmailAddress
+    case moveNext
 }
