@@ -58,5 +58,35 @@ class UserTest: XCTestCase {
             }
         }
     }
+ 
+    
+    func testAppleAuth() {
+        let appleAuthDriver = TestAppleAuthDriver()
+        let appleLogin = SystemAuth(appleAuthDriver)
+        appleLogin.registration()
+        
+    }
+    
+}
+
+
+
+
+
+class TestAppleAuthDriver: AuthDriver {
+    func login() {
+        delegate?.success()
+    }
+    
+    func registration() {
+        delegate?.success()
+    }
+    
+    func logout() {
+        delegate?.success()
+    }
+    
+    var delegate: AuthResponseDelegae?
+    
     
 }
