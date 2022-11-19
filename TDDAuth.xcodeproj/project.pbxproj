@@ -19,7 +19,7 @@
 		FAD1D4A42925176C001B30B6 /* ValidationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD1D4A32925176C001B30B6 /* ValidationManager.swift */; };
 		FAD1D4A6292517AB001B30B6 /* AppError.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD1D4A5292517AB001B30B6 /* AppError.swift */; };
 		FAD1D4AA292517FD001B30B6 /* UserManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD1D4A9292517FD001B30B6 /* UserManager.swift */; };
-		FAD1D4AD2925256D001B30B6 /* SystemAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD1D4AC2925256D001B30B6 /* SystemAuth.swift */; };
+		FAD1D4AD2925256D001B30B6 /* SocialAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = FAD1D4AC2925256D001B30B6 /* SocialAuth.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,7 +47,7 @@
 		FAD1D4A32925176C001B30B6 /* ValidationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidationManager.swift; sourceTree = "<group>"; };
 		FAD1D4A5292517AB001B30B6 /* AppError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppError.swift; sourceTree = "<group>"; };
 		FAD1D4A9292517FD001B30B6 /* UserManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserManager.swift; sourceTree = "<group>"; };
-		FAD1D4AC2925256D001B30B6 /* SystemAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SystemAuth.swift; sourceTree = "<group>"; };
+		FAD1D4AC2925256D001B30B6 /* SocialAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SocialAuth.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,7 +148,7 @@
 		FAD1D4AB29252556001B30B6 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
-				FAD1D4AC2925256D001B30B6 /* SystemAuth.swift */,
+				FAD1D4AC2925256D001B30B6 /* SocialAuth.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -259,7 +259,7 @@
 				FAD1D4A6292517AB001B30B6 /* AppError.swift in Sources */,
 				FAD1D48F29250F35001B30B6 /* Platform.swift in Sources */,
 				FAD1D48229250E23001B30B6 /* ContentView.swift in Sources */,
-				FAD1D4AD2925256D001B30B6 /* SystemAuth.swift in Sources */,
+				FAD1D4AD2925256D001B30B6 /* SocialAuth.swift in Sources */,
 				FAD1D48029250E23001B30B6 /* TDDAuthApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

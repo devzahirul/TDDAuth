@@ -9,33 +9,45 @@ import Foundation
 import AuthenticationServices
 
 
+struct AuthResponse {
+    let userIdentifier: String?
+    let email: String?
+    let name: String?
+}
 
-protocol AuthResponseDelegae {
-    func success()
-    func failed()
+enum AuthState {
+    case signedIn
+    case signedout
+    case registerded
 }
 
 
-protocol AuthDriver: AuthProtocol {
+protocol AuthResponseDelegae {
+    func success(authState: AuthState, authResponse: AuthResponse?)
+    func failed(authState: AuthState,  error: AppError?)
+}
+
+
+protocol SocialAuthDriver: AuthProtocol {
     var delegate: AuthResponseDelegae? { set get }
   
 }
 
 
 
-class AppleAuthDriver: NSObject, AuthDriver {
+class AppleAuthDriver: NSObject, SocialAuthDriver {
     var delegate: AuthResponseDelegae?
     
     func login() {
-        
+        delegate?.success(authState: .signedIn, authResponse: nil)
     }
     
     func registration() {
-        
+        delegate?.success(authState: .registerded, authResponse: nil)
     }
     
     func logout() {
-        
+        delegate?.success(authState: .signedout, authResponse: nil)
     }
     
     func performRequest() {
@@ -90,25 +102,29 @@ extension AppleAuthDriver: ASAuthorizationControllerDelegate {
 
 
 
-class SystemAuth: NSObject, AuthProtocol, AuthResponseDelegae {
+class SocialAuth: NSObject, AuthProtocol, AuthResponseDelegae {
     
-    private(set) var driver: AuthDriver
+    var handleSuccess: ((AuthState, AuthResponse?) -> Void)?
+    var handleFailed: ((AuthState, AppError?) -> Void)?
+  
+    func success(authState: AuthState, authResponse: AuthResponse?) {
+        handleSuccess?(authState, authResponse)
+    }
     
-    init(_ driver: AuthDriver) {
+    func failed(authState: AuthState, error: AppError?) {
+        handleFailed?(authState, error)
+    }
+    
+    
+    private(set) var driver: SocialAuthDriver
+    
+    init(_ driver: SocialAuthDriver) {
         
         self.driver = driver
         super.init()
         self.driver.delegate = self
     }
     
-    
-    func success() {
-        // if success
-    }
-    
-    func failed() {
-        // if failed
-    }
     
     func login() {
         

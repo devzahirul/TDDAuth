@@ -62,8 +62,14 @@ class UserTest: XCTestCase {
     
     func testAppleAuth() {
         let appleAuthDriver = TestAppleAuthDriver()
-        let appleLogin = SystemAuth(appleAuthDriver)
-        appleLogin.registration()
+        let socialAuth = SocialAuth(appleAuthDriver)
+        
+        socialAuth.handleSuccess = {state, error in
+            XCTAssertEqual(state, .registerded)
+        }
+        
+        
+        socialAuth.registration()
         
     }
     
@@ -73,20 +79,74 @@ class UserTest: XCTestCase {
 
 
 
-class TestAppleAuthDriver: AuthDriver {
+class TestAppleAuthDriver: SocialAuthDriver {
     func login() {
-        delegate?.success()
+        delegate?.success(authState: .signedIn, authResponse: nil)
     }
     
     func registration() {
-        delegate?.success()
+        delegate?.success(authState: .registerded, authResponse: nil)
     }
     
     func logout() {
-        delegate?.success()
+        delegate?.success(authState: .signedout, authResponse: nil)
     }
     
     var delegate: AuthResponseDelegae?
     
     
 }
+
+
+struct User {}
+struct UserProfile {}
+
+
+protocol AuthManagerProtocol {
+    func login(email: String, password: String)
+    func registration(email: String, password: String, userName: String)
+    func logout()
+}
+
+
+protocol HttpProtocol {
+    func doRequest()
+}
+
+
+
+class cUserManager {
+    static func createProfile() {}
+    
+    static func deleteProfile() {}
+    
+    static func updateProfile() {}
+    
+    static func makeSelectProfile() {}
+    
+}
+
+
+
+class cAuthManager: AuthManagerProtocol {
+    private(set) var http: HttpProtocol
+    
+    init(_ http: HttpProtocol) {
+        self.http = http
+    }
+    
+    func login(email: String, password: String) {
+        
+    }
+    
+    func logout() {
+        
+    }
+    
+    func registration(email: String, password: String, userName: String) {
+        
+    }
+}
+
+
+
